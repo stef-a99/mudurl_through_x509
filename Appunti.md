@@ -30,7 +30,7 @@
 
 IANA has made the following assignments for:
 -   **MUDURLExtnModule-2016 ASN.1 module (88)** in the "SMI Security
-      for PKIX Module Identifier" registry (1.3.6.1.5.5.7.0).
+      for PKIX Module Identifier" registry (1.3.6.1.5.5.7.0.88).
 
 -  **id-pe-mud-url object identifier (25)** from the "SMI Security for
       PKIX Certificate Extension" registry (1.3.6.1.5.5.7.1).
