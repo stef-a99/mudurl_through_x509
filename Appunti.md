@@ -30,27 +30,27 @@
 
 IANA has made the following assignments for:
 -   **MUDURLExtnModule-2016 ASN.1 module (88)** in the "SMI Security
-      for PKIX Module Identifier" registry (1.3.6.1.5.5.7.0).
+      for PKIX Module Identifier" registry (1.3.6.1.5.5.7.0.88).
 
 -  **id-pe-mud-url object identifier (25)** from the "SMI Security for
       PKIX Certificate Extension" registry (1.3.6.1.5.5.7.1).
 
 -   **id-pe-mudsigner object identifier (30)** from the "SMI Security for
-      PKIX Certificate Extension" registry.
+      PKIX Certificate Extension" registry (1.3.6.1.5.5.7.1.30).
 
 -   **id-ct-mudtype object identifier (41)** from the "SMI Security for
-      S/MIME CMS Content Type" registry.
+      S/MIME CMS Content Type" registry (1.2.840.113549.1.9.16.1.41).
 
 
 # MUDURL Extension for x509
 
 The new extension is identified as follows:
 
-   `<CODE BEGINS>`
-      `MUDURLExtnModule-2016 { iso(1) identified-organization(3) dod(6)`
-                   `internet(1) security(5) mechanisms(5) pkix(7)`
-                   `id-mod(0) id-mod-mudURLExtn2016(88) }`
-       `DEFINITIONS IMPLICIT TAGS ::= BEGIN`
+	   `<CODE BEGINS>`
+	      `MUDURLExtnModule-2016 { iso(1) identified-organization(3) dod(6)`
+	                   `internet(1) security(5) mechanisms(5) pkix(7)`
+	                   `id-mod(0) id-mod-mudURLExtn2016(88) }`
+	       `DEFINITIONS IMPLICIT TAGS ::= BEGIN`
 
        `-- EXPORTS ALL --`
 
