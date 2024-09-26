@@ -8,5 +8,6 @@
 	-  Ran the first two commands specified in [[Appunti#Create a X509 Cert with Custom Extension]], and turned the result shown in the picture below:
 	  
 	
-![[first_try_res.png]]
+![First try result](first_try_res.png)
+
 			
