@@ -10,5 +10,5 @@
 	  
 > [!first_try_res] First try result
 > 
-![[Pasted image 20240926164003.png]]
+![[first_try_res.png]]
 			
