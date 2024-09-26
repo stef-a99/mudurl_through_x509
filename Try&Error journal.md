@@ -7,8 +7,6 @@
 			1.3.6.1.5.5.7.1.25 = ASN1:UTF8String:"https://mudfs.example.com/fe-localnetwork-to.json"
 	-  Ran the first two commands specified in [[Appunti#Create a X509 Cert with Custom Extension]], and turned the result shown in the picture below:
 	  
-	  
-> [!first_try_res] First try result
-> 
+	
 ![[first_try_res.png]]
 			
