@@ -8,19 +8,19 @@
 		OID=ASN1:UTF8String:My custom extension's value
 
   -  Generate server key: 
-				    `genrsa -des3 -out server.key 1024`
+				    `openssl genrsa -des3 -out server.key 1024`
   
   -  Create certificate signing request: 
-			`req -new -key server.key -out server.csr -config openssl.cfg`
+			`openssl req -new -key server.key -out server.csr -config openssl.cfg`
 
   - Copy key to somewhere temporarily: 
-					    `copy server.key server.key.org`
+					    `cp server.key server.key.org`
   
   -  Remove the passphrase: 
-					    `rsa -in server.key.org -out server.key`
+					    `openssl rsa -in server.key.org -out server.key`
 
   -  Generate your certificate with standard extensions: 
-		  `x509 -req -days 365 -in server.csr -signkey server.key -out server.crt -extensions v3_req -extfile openssl.cfg`
+		  `openssl x509 -req -days 365 -in server.csr -signkey server.key -out server.crt -extensions v3_req -extfile openssl.cfg`
 
 
 # From RFC 8250
