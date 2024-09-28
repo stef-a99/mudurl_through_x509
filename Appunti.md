@@ -33,7 +33,7 @@ IANA has made the following assignments for:
       for PKIX Module Identifier" registry (1.3.6.1.5.5.7.0.88).
 
 -  **id-pe-mud-url object identifier (25)** from the "SMI Security for
-      PKIX Certificate Extension" registry (1.3.6.1.5.5.7.1).
+      PKIX Certificate Extension" registry (1.3.6.1.5.5.7.1.25).
 
 -   **id-pe-mudsigner object identifier (30)** from the "SMI Security for
       PKIX Certificate Extension" registry (1.3.6.1.5.5.7.1.30).
@@ -121,4 +121,4 @@ The new extension is identified as follows:
        `id-ct-mudtype OBJECT IDENTIFIER ::= { id-ct 41 }`
 
        `END`
-   `<CODE ENDS>`
+   	`<CODE ENDS>`
