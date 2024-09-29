@@ -3,6 +3,7 @@ Implementation of the MUD architecture (Manufacturer Usage Description) through 
 
 ### TODO LIST
 - Search more about Custom Extensions for x509 certs
+      - See more at https://dustinoprea.com/2014/04/18/adding-custom-data-to-x-509-ssl-certificates/
 - Search more about x509 extension for MUD
 - Learn Ansible
 - Make a reproducible env of the project via Ansible
