@@ -13,26 +13,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Appunti.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "3771ce78b014c45e",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
                 "file": "Try&Error journal.md",
                 "mode": "source",
                 "source": false
               }
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -161,12 +148,13 @@
   },
   "active": "9adcdae8b70954ee",
   "lastOpenFiles": [
-    "src/Pasted image 20241005130158.png",
-    "src/Pasted image 20241005125753.png",
-    "src/Pasted image 20241005125647.png",
     "Appunti.md",
-    "src/first_try_res.png",
+    "src/Pasted.md",
     "Try&Error journal.md",
+    "src/sec_try_res_3.png",
+    "src/sec_try_res_2.png",
+    "src/sec_try_res_1.png",
+    "src/first_try_res.png",
     "img",
     "src"
   ]

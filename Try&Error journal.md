@@ -12,13 +12,13 @@
 
  - 05/10/2024
 	 - Put the followings into /etc/ssl/openssl.cnf
-![[src/Pasted image 20241005125647.png]]
+![Second try result 1](src/sec_try_res_1.png)
 	
  	and
 
-!(src/Pasted image 20241005125753.png)
+![Second try result 2 ](src/sec_try_res_2.png)
 	- Ran every step of [[Appunti#Create a X509 Cert with Custom Extension]]
 	
-	**RESULT**: The certificate is generated successfuly, BUT it doesn't show any extension when running `openssl x509 -noout -text -in server.pem -ext all`:
+**RESULT**: The certificate is generated successfuly, BUT it doesn't show any extension when running `openssl x509 -noout -text -in server.pem -ext all`:
 
-![[src/Pasted image 20241005130158.png]]
+![Second try result 3](src/sec_try_res_3.png)
