@@ -18,7 +18,8 @@
  	and
 
 ![Second try result 2 ](src/sec_try_res_2.png)
-	- Ran every step of [[Appunti#Create a X509 Cert with Custom Extension]]
+	
+ - Ran every step of [[Appunti#Create a X509 Cert with Custom Extension]]
 	
 **RESULT**: The certificate is generated successfuly, BUT it doesn't show any extension when running `openssl x509 -noout -text -in server.pem -ext all`:
 
