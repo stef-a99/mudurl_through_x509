@@ -12,6 +12,7 @@
 
  - 05/10/2024
 	 - Put the followings into /etc/ssl/openssl.cnf
+
 ![Second try result 1](src/sec_try_res_1.png)
 	
  	and
