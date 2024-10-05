@@ -24,3 +24,7 @@
 **RESULT**: The certificate is generated successfuly, BUT it doesn't show any extension when running `openssl x509 -noout -text -in server.pem -ext all`:
 
 ![Second try result 3](src/sec_try_res_3.png)
+
+
+**==EDIT==**: if I print out the csr in text format, it shows the extensions (must know why it shows them with that characters before their values).
+
