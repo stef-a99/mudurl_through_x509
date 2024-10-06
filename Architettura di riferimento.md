@@ -20,4 +20,4 @@
 ### CONTRO
 - Il server può diventare un bottleneck nel caso in cui il numero di dispositvi sia molto elevato. Questo, perché quella macchina deve firmare il certificato e completare tutta la procedura di estrazione e richiesta del MUD file, più rule enforcement. Si potrebbe pensare di inviare a osmud dei certificati *self-signed*, ma è sempre meglio averne di firmati dalla CA, per motivi di sicurezza. Una soluzione potrebbe essere quella di dividere i compiti; quindi, avere una macchina che si occupa di firmare i certificati e rilasciarli sia alla Thing che ad osmud, il quale si occuperà dei suoi soliti compiti (vedi diagramma sotto).
 ![Una prima ottimizzazione](src/optimization_1.png)
-	In questo caso, la nuova CA deve firmare anche il certificato della macchina in cui è ospitato tutto il backend (osmud+UPS); quindi, per riutilizzare la stessa CA
+	In questo caso, basta copiare il certificato della CA creata nel caso DHCP nella nuova macchina. Di base, ciò vuol dire dividere i compiti in due macchine distinte. Ciò mi permetterebbe anche di spostare il MUD File Server nell'altra macchina senza problemi, così da rispettare le disposizioni dello standard.
