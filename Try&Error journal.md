@@ -28,3 +28,9 @@
 
 **==EDIT==**: if I print out the csr in text format, it shows the extensions (must know why it shows them with that characters before their values).
 
+- 12/10/2024
+Tried by running che command `openssl x509 -req -days 365 -in server.csr -signkey server.key -out server.crt -extensions v3_req -extfile /etc/ssl/openssl.cnf`. Moreover, the openssl.cnf file was edited by putting *x509_extensions = v3_req*. The crt printout was:
+
+![Third try result](src/third_try_res.jpg)
+
+Don't know if it's the right process, but it works! :D
