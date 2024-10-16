@@ -22,7 +22,12 @@
 ![Una prima ottimizzazione](src/optimization_1.png)
 	In questo caso, basta copiare il certificato della CA creata nel caso DHCP nella nuova macchina. Di base, ciò vuol dire dividere i compiti in due macchine distinte. Ciò mi permetterebbe anche di spostare il MUD File Server nell'altra macchina senza problemi, così da rispettare le disposizioni dello standard.
 
+### Altra soluzione
 
+Il manufacturer ci dà a disposizione la *thing* con già il certificato, così che essa possa mandarlo al mud manager. Ovviamente, quest'ultimo deve conoscere e quindi fidarsi della CA.
+
+
+>[!NOTE] sistema lo schema e fai diagramma di flusso
 
 # Questa architettura è legit?
 
@@ -55,3 +60,4 @@ La specifica MUD dice che:
    relationship between the Thing and the file.
    
 
+![[Pasted image 20241016135327.png]]quando IoT invia cert a osmud, osmud controlla che sia stato firmato dalla CA del manufacturer (subject). successivamente, estrare il mud URL e controlla che punti al mudfs del manufacturer (mudsigner).

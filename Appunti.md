@@ -7,6 +7,8 @@
 		OID=critical,ASN1:UTF8String:My custom extension's value
 		OID=ASN1:UTF8String:My custom extension's value
 
+>[!TODO] verifica se esiste il campo per queste estensioni di ASN1
+
   -  Generate server key: 
 				    `openssl genrsa -des3 -out server.key 1024`
   
