@@ -54,9 +54,4 @@ La specifica MUD dice che:
    is the accountability of the recommendation, and not just the
    relationship between the Thing and the file.
    
-Da quello che si intuisce da queste due sezioni, chi firma il certificato deve essere chi è presente nel campo id-pe-mudsigner. In questo modo, tale campo può contenere il subject della nostra CA (in blu). Dato che la macchina con la CA e la macchina con osmud si conoscono tramite i loro certificati, allora basta che osmud controlli l'uguaglianza da id-pe-mudsigner e il valore del campo subject del certificato della CA ed il gioco è fatto. Se tale uguaglianza non è verificata, allora si richiede l'intervento dell'amministratore.
-   
-##### Sotto queste ipotesi, l'architettura è corretta!
-  
-
 
