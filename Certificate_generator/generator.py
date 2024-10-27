@@ -47,7 +47,7 @@ csr = x509.CertificateSigningRequestBuilder().subject_name(x509.Name([
         ).add_extension(
             x509.UnrecognizedExtension(
                 oid=x509.ObjectIdentifier("1.3.6.1.5.5.7.1.30"),
-                value=b"C = IT, ST = Italy, L = Bolo, O = UniBo, OU = DISI, CN = mudfs.example.com, emailAddress = manufacturerOne@unibo.it"
+                value=b"C = IT, ST = Italy, L = Bologna, O = UniBo, OU = DISI, CN = mudfs.example.com, emailAddress = manufacturerOne@unibo.it"
             ),
         critical=False).sign(private_key, hashes.SHA256())
 
