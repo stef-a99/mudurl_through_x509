@@ -60,4 +60,8 @@ La specifica MUD dice che:
    relationship between the Thing and the file.
    
 
+
+# Appunti call del 16 ottobre 2024
+
+
 ![[Pasted image 20241016135327.png]]quando IoT invia cert a osmud, osmud controlla che sia stato firmato dalla CA del manufacturer (subject). successivamente, estrare il mud URL e controlla che punti al mudfs del manufacturer (mudsigner).

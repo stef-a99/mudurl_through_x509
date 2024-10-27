@@ -2,12 +2,26 @@
 Implementation of the MUD architecture (Manufacturer Usage Description) through the use of x509 certs.
 
 ### TODO LIST
-- Search more about Custom Extensions for x509 certs
-      - See more at https://dustinoprea.com/2014/04/18/adding-custom-data-to-x-509-ssl-certificates/
-- Search more about x509 extension for MUD
-- Make a reference architecture
-- Learn Ansible
-- Make a reproducible env of the project via Ansible
+
+>[!DONE] Crea un'architettura di riferimento
+>
+>Fatto! Vedi [[Architettura di riferimento]]
+
+>[!TODO] Sistema lo schema dell'architettura e crea un diagramma di flusso del comportamento della tua simulazione
+>
+>Progressi nella sezione [[Architettura di riferimento#Appunti call del 16 ottobre 2024]]
+>
+
+>[!DONE] verifica se esiste il campo per queste estensioni di ASN1
+>
+>Sì! Esiste, ed è riportato nella RFC di MUD. L'inserimento dei valori di questi campi è stato simulato con un apposito script in Python, che genera CA, certificato del MUDFS del manufacturer e certificato del device, con relative chiavi!
+>
+
+>[!TODO] Rendi lo script di cui sopra scalabile!
+>
+>Deve poter risalire la chain of trust fra il file .p7s e il dispositivo di IoT che lo riceve.
+
+>[!TODO] Crea un ambiente riproducibile con Ansible
 
 >[!WARNING] See [[Architettura di riferimento#Questa architettura è legit?]]
 # REFERENCES
