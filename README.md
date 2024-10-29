@@ -3,6 +3,8 @@ Implementation of the MUD architecture (Manufacturer Usage Description) through 
 
 ### TODO LIST
 
+>[!TODO] Guardare IoTLab
+
 >[!DONE] Crea un'architettura di riferimento
 >
 >Fatto! Vedi [[Architettura di riferimento]]
@@ -20,6 +22,8 @@ Implementation of the MUD architecture (Manufacturer Usage Description) through 
 >[!TODO] Rendi lo script di cui sopra scalabile!
 >
 >Deve poter risalire la chain of trust fra il file .p7s e il dispositivo di IoT che lo riceve.
+
+>[!TODO] Chiudere il giro di MUD, con ottenimento delle iptables e la verifica delle comunicazioni
 
 >[!TODO] Crea un ambiente riproducibile con Ansible
 

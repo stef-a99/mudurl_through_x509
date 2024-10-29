@@ -60,3 +60,4 @@ else
 fi
 
 
+# Prima controlla la validità e poi fai il parsing.
