@@ -26,8 +26,8 @@
 
 Il manufacturer ci dà a disposizione la *thing* con già il certificato, così che essa possa mandarlo al mud manager. Ovviamente, quest'ultimo deve conoscere e quindi fidarsi della CA.
 
+![Versione finale](src/ref_arch_final.png)
 
->[!NOTE] sistema lo schema e fai diagramma di flusso
 
 # Questa architettura è legit?
 

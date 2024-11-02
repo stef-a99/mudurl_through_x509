@@ -45,7 +45,6 @@ else
             # Sends the MUD URL to the MUDFS
             echo "Sending MUD URL to the MUDFS..."
             # Passes the MUD URL to the script that takes care of the communication with the MUDFS
-            
 
         fi
 
