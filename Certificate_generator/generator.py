@@ -64,7 +64,7 @@ certificate = x509.CertificateBuilder().subject_name(csr.subject).issuer_name(
     critical=False).add_extension(
     x509.UnrecognizedExtension(
         oid=x509.ObjectIdentifier("1.3.6.1.5.5.7.1.30"),
-        value=b"C = IT, ST = Italy, L = Bolo, O = UniBo, OU = DISI, CN = mudfs.example.com, emailAddress = manufacturerOne@unibo.it",
+        value=b"C = IT, ST = Italy, L = Bolo, O = UniBo, OU = DISI, CN = mudfs.example.com, emailAddress = mudfs@example.email.com",
     ),
     critical=False).sign(ca_private_key, hashes.SHA256())
 

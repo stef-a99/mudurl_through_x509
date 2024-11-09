@@ -9,7 +9,7 @@ fi
 P7S_FILE=$1
 DEVICE_CERT=$2
 
-openssl verify -CAfile "$P7S_FILE" "$DEVICE_CERT"
+openssl verify "$P7S_FILE" "$DEVICE_CERT"
 
 # Clean up
-rm extracted_certs.pem
+#rm extracted_certs.pem

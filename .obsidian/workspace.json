@@ -11,10 +11,14 @@
             "id": "b7ca4203825106cd",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
+              "type": "markdown",
+              "state": {
+                "file": "README.md",
+                "mode": "source",
+                "source": false
+              },
               "icon": "lucide-file",
-              "title": "Nuova scheda"
+              "title": "README"
             }
           }
         ]
@@ -174,12 +178,23 @@
   "active": "b7ca4203825106cd",
   "lastOpenFiles": [
     "Architettura di riferimento.md",
+    "README.md",
+    "src/osmud_behavior.png",
+    "Certificate_generator/generated/iot_dev_cert.pem",
+    "Certificate_generator/generated/iot_dev_key.key",
+    "Certificate_generator/generated/manufacturer_ca_cert.pem",
+    "Certificate_generator/generated/manufacturer_ca_key.key",
+    "Certificate_generator/generated/mudfs_cert.pem",
+    "Certificate_generator/generated/mudfs_key.key",
+    "Certificate_generator/generated/testmud.json",
+    "Certificate_generator/generated/testmud.p7s",
+    "Certificate_generator/testmud.p7s",
+    "Certificate_generator/testmud.json",
+    "Appunti.md",
     "src/ref_arch.png",
     "src/ref_arch_final.png",
     "src/ref_arch 1.png",
     "Pasted image 20241016135327.png",
-    "Appunti.md",
-    "README.md",
     "Try&Error journal.md",
     "src/third_try_res.jpg",
     "src/optimization_1.png",
@@ -189,9 +204,6 @@
     "Untitled Diagram.svg",
     "Untitled.canvas",
     "2024-10-06.md",
-    "src/sec_try_res_3.png",
-    "src/sec_try_res_2.png",
-    "img",
-    "src"
+    "src/sec_try_res_3.png"
   ]
 }

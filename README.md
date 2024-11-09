@@ -9,9 +9,9 @@ Implementation of the MUD architecture (Manufacturer Usage Description) through 
 >
 >Fatto! Vedi [[Architettura di riferimento]]
 
->[!TODO] Sistema lo schema dell'architettura e crea un diagramma di flusso del comportamento della tua simulazione
+>[!DONE] Sistema lo schema dell'architettura e crea un diagramma di flusso del comportamento della tua simulazione
 >
->Progressi nella sezione [[Architettura di riferimento#Appunti call del 16 ottobre 2024]]
+>Vedi sezione [[Architettura di riferimento]]
 >
 
 >[!DONE] verifica se esiste il campo per queste estensioni di ASN1

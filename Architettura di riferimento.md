@@ -64,4 +64,6 @@ La specifica MUD dice che:
 # Appunti call del 16 ottobre 2024
 
 
-![[Pasted image 20241016135327.png]]quando IoT invia cert a osmud, osmud controlla che sia stato firmato dalla CA del manufacturer (subject). successivamente, estrare il mud URL e controlla che punti al mudfs del manufacturer (mudsigner).
+![Comportamento osmud](src/osmud_behavior.png)
+
+Quando la thing invia il suo certificato ad osmud (mud controller), quest'ultimo controlla che sia stato firmato dalla CA del manufacturer. Successivamente, estrare il mud URL e controlla che punti al mudfs del manufacturer (mudsigner).
