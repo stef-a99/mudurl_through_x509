@@ -18,12 +18,17 @@ ca_subject = x509.Name([
     x509.NameAttribute(NameOID.COMMON_NAME, u"ca.example.com"),
     x509.NameAttribute(NameOID.EMAIL_ADDRESS, u"ca@example.email.com")
 ])
+# Create a CA certificate signing request (CSR)
+ca_csr = x509.CertificateSigningRequestBuilder().subject_name(ca_subject).sign(ca_private_key, hashes.SHA256())
 
-ca_certificate = x509.CertificateBuilder().subject_name(ca_subject).issuer_name(
-    ca_subject).public_key(ca_private_key.public_key()).serial_number(
+# Create a CA certificate
+ca_certificate = x509.CertificateBuilder().subject_name(
+    ca_subject).issuer_name(
+    ca_subject).public_key(
+    ca_private_key.public_key()).serial_number(
     x509.random_serial_number()).not_valid_before(
-    datetime.datetime.now()).not_valid_after(
-    datetime.datetime.now() + datetime.timedelta(days=365)).add_extension(
+    datetime.datetime.now() - datetime.timedelta(days=1)).not_valid_after(
+    datetime.datetime.now() + datetime.timedelta(days=3650)).add_extension(
     x509.BasicConstraints(ca=True, path_length=None), critical=True).sign(
     ca_private_key, hashes.SHA256())
 
@@ -37,8 +42,8 @@ csr = x509.CertificateSigningRequestBuilder().subject_name(x509.Name([
     x509.NameAttribute(NameOID.LOCALITY_NAME, u"Bologna"),
     x509.NameAttribute(NameOID.ORGANIZATION_NAME, u"UniBo"),
     x509.NameAttribute(NameOID.ORGANIZATIONAL_UNIT_NAME, u"DISI"),
-    x509.NameAttribute(NameOID.COMMON_NAME, u"manifacturer.example.com"),
-    x509.NameAttribute(NameOID.EMAIL_ADDRESS, u"manufacturerOne@unibo.it")
+    x509.NameAttribute(NameOID.COMMON_NAME, u"iotDev.example.com"),
+    x509.NameAttribute(NameOID.EMAIL_ADDRESS, u"mudIoTDev@example.com")
 ])).add_extension(
     x509.UnrecognizedExtension(
         oid=x509.ObjectIdentifier("1.3.6.1.5.5.7.1.25"),
@@ -47,7 +52,7 @@ csr = x509.CertificateSigningRequestBuilder().subject_name(x509.Name([
         ).add_extension(
             x509.UnrecognizedExtension(
                 oid=x509.ObjectIdentifier("1.3.6.1.5.5.7.1.30"),
-                value=b"C = IT, ST = Italy, L = Bologna, O = UniBo, OU = DISI, CN = mudfs.example.com, emailAddress = manufacturerOne@unibo.it"
+                value=b"mudfs.example.com"
             ),
         critical=False).sign(private_key, hashes.SHA256())
 
@@ -55,7 +60,7 @@ csr = x509.CertificateSigningRequestBuilder().subject_name(x509.Name([
 certificate = x509.CertificateBuilder().subject_name(csr.subject).issuer_name(
     ca_certificate.subject).public_key(csr.public_key()).serial_number(
     x509.random_serial_number()).not_valid_before(
-    datetime.datetime.now()).not_valid_after(
+    datetime.datetime.now() - datetime.timedelta(days=1)).not_valid_after(
     datetime.datetime.now() + datetime.timedelta(days=365)).add_extension(
     x509.UnrecognizedExtension(
         oid=x509.ObjectIdentifier("1.3.6.1.5.5.7.1.25"),
@@ -64,7 +69,7 @@ certificate = x509.CertificateBuilder().subject_name(csr.subject).issuer_name(
     critical=False).add_extension(
     x509.UnrecognizedExtension(
         oid=x509.ObjectIdentifier("1.3.6.1.5.5.7.1.30"),
-        value=b"C = IT, ST = Italy, L = Bolo, O = UniBo, OU = DISI, CN = mudfs.example.com, emailAddress = mudfs@example.email.com",
+        value=b"mudfs.example.com",
     ),
     critical=False).sign(ca_private_key, hashes.SHA256())
 
@@ -79,15 +84,17 @@ csr_mudfs = x509.CertificateSigningRequestBuilder().subject_name(x509.Name([
     x509.NameAttribute(NameOID.ORGANIZATION_NAME, u"UniBo"),
     x509.NameAttribute(NameOID.ORGANIZATIONAL_UNIT_NAME, u"DISI"),
     x509.NameAttribute(NameOID.COMMON_NAME, u"mudfs.example.com"),
-    x509.NameAttribute(NameOID.EMAIL_ADDRESS, u"mudfs@example.email.com")
+    x509.NameAttribute(NameOID.EMAIL_ADDRESS, u"mudfs@example.com")
 ])).sign(man_private_key, hashes.SHA256())
 
 # Generate a certificate signed by the CA
-man_certificate = x509.CertificateBuilder().subject_name(csr.subject).issuer_name(
-    ca_certificate.subject).public_key(csr.public_key()).serial_number(
+man_certificate = x509.CertificateBuilder().subject_name(csr_mudfs.subject).issuer_name(
+    ca_certificate.subject).public_key(csr_mudfs.public_key()).serial_number(
     x509.random_serial_number()).not_valid_before(
-    datetime.datetime.now()).not_valid_after(
+    datetime.datetime.now() - datetime.timedelta(days=1)).not_valid_after(
     datetime.datetime.now() + datetime.timedelta(days=365)).sign(ca_private_key, hashes.SHA256())
+
+
 
 # Save the manufacturer mudfs private key and certificate to files
 with open("generated/mudfs_key.key", "wb") as f:
@@ -102,14 +109,14 @@ with open("generated/mudfs_cert.pem", "wb") as f:
     f.write(man_certificate.public_bytes(serialization.Encoding.PEM))
 
 # Save the CA private key and certificate to files
-with open("generated/manufacturer_ca_key.key", "wb") as f:
+with open("generated/ca_key.key", "wb") as f:
     f.write(ca_private_key.private_bytes(
         encoding=serialization.Encoding.PEM,
         format=serialization.PrivateFormat.PKCS8,
         encryption_algorithm=serialization.NoEncryption()
     ))
 
-with open("generated/manufacturer_ca_cert.pem", "wb") as f:
+with open("generated/ca_cert.pem", "wb") as f:
     f.write(ca_certificate.public_bytes(serialization.Encoding.PEM))
 
 # Save the private key and certificate to files

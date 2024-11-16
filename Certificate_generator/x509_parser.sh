@@ -1,65 +1,65 @@
 #!/bin/bash
 
-# Check if the user provided a certificate file
-if [ "$#" -ne 1 ]; then
-    echo "Usage: $0 <certificate-file>"
-    exit 1
-fi
-
-
-CERT_FILE=$1
-CA_FILE="generated/manufacturer_ca_cert.pem"
+CERT_FILE="generated/iot_dev_cert.pem"
+CA_FILE="generated/ca_cert.pem"
+CA_FILE_SHORT="ca_cert.pem"
 MUDFS_FILE="generated/mudfs_cert.pem"
 
 # Check if the file exists
-if [ ! -f "$CERT_FILE" ]; then
-    echo "File not found: $CERT_FILE"
-    exit 1
+if [ ! -f "/usr/local/share/ca-certificates/$CA_FILE_SHORT" ]; then
+    sudo cp "$CA_FILE" /usr/local/share/ca-certificates/
+    sudo cp "$CA_FILE" /etc/ssl/certs/
+    sudo update-ca-certificates
+else
+    echo "The CA certificate is already copied."
 fi
 
-
-
-# Check if the certificate was signed by the CA with common name "ca.example.com"
-IOT_ISSUER=$(openssl x509 -in "$CERT_FILE" -noout -text -issuer |  grep -A1 "Issuer" | head -n1 | cut -d ':' -f2- | xargs)
-CA_SUBJECT=$(openssl x509 -in "$CA_FILE" -noout -text -subject |  grep -A1 "Subject" | head -n1 | cut -d ':' -f2- | xargs)
-
-if [ "$IOT_ISSUER" != "$CA_SUBJECT" ]; then
-    echo "Certificate was not signed by the CA with common name 'ca.example.com'."
+#Check if the certificate was signed by a trusted CA
+if ! openssl verify -CAfile "$CA_FILE" "$CERT_FILE" > /dev/null 2>&1; then
+    echo "The certificate is not signed by a trusted CA."
+    # Print the issuer of the CA file
+    CA_SUBJECT=$(openssl x509 -in "$CA_FILE" -noout -subject | sed 's/subject= //')
+    echo "The subject of the CA file is:"
+    echo "$CA_SUBJECT"
+    echo "The issuer of the CA file is:"
+    CA_ISSUER=$(openssl x509 -in "$CA_FILE" -noout -issuer | sed 's/issuer= //')
+    echo "$CA_ISSUER"
+    # Print the issuer of the certificate file
+    CERT_ISSUER=$(openssl x509 -in "$CERT_FILE" -noout -issuer | sed 's/issuer= //')
+    echo "The issuer of the certificate file is:"
+    echo "$CERT_ISSUER"
     exit 1
 else
-    echo "Certificate was signed by the CA with common name 'ca.example.com'."
-    # Checks if the MUD signer was the MUDFS
-    MUDFS_ISSUER=$(openssl x509 -in "$MUDFS_FILE" -noout -text -issuer |  grep -A1 "Issuer" | head -n1 | cut -d ':' -f2- | xargs)
-    if [ "$MUDFS_ISSUER" != "$CA_SUBJECT" ]; then
-        echo "Unable to find the MUD Signer for this certificate."
-        exit 1
+    echo "The certificate is signed by a trusted CA."
+    # Extract and print the value of the 1.3.6.1.5.5.7.1.25 OID extension
+    EXT_VALUE=$(openssl x509 -in "$CERT_FILE" -noout -text | grep -A1 "1.3.6.1.5.5.7.1.25" | tail -n1 | awk '{$1=$1;print}')
+
+    if [ -z "$EXT_VALUE" ]; then
+        echo "The certificate does not contain the id-pe-mud-url extension."
     else
-        echo "MUD Signer found."
-        # Extract the value of the extension called "id-pe-mud-url"
-        EXTENSION_VALUE=$(openssl x509 -in "$CERT_FILE" -noout -text | grep -A1 "1.3.6.1.5.5.7.1.25" | tail -n1 | awk '{$1=$1;print}')
+        echo "The value of the id-pe-mud-url extension is:"
+        echo "$EXT_VALUE"
+    fi
+    # Extract and print the value of the mudsigner extension
+    MUDSIGNER_VALUE=$(openssl x509 -in "$CERT_FILE" -noout -text | grep -A1 "1.3.6.1.5.5.7.1.30" | tail -n1 | awk '{$1=$1;print}')
 
-        if [ -z "$EXTENSION_VALUE" ]; then
-            echo "Extension id-pe-mud-url not found in the certificate."
+    if [ -z "$MUDSIGNER_VALUE" ]; then
+        echo "The certificate does not contain the mudsigner extension."
+    else
+        echo "The value of the mudsigner extension is:"
+        echo "$MUDSIGNER_VALUE"
+
+        # Check if the mudsigner extension value matches the mudfs certificate
+        #MUDFS_VALUE=$(openssl x509 -in "$MUDFS_FILE" -noout -text | grep -A1 "Subject: CN = " | tail -n1 | awk '{$1=$1;print}')
+        MUDFS_VALUE=$(openssl x509 -in "$MUDFS_FILE" -noout -subject | sed -n 's/^.*CN = //p' | sed 's/,.*//')
+        if [ "$MUDSIGNER_VALUE" == "$MUDFS_VALUE" ]; then
+            echo "The mudsigner extension value matches the mudfs certificate."
         else
-            echo "id-pe-mud-url: $EXTENSION_VALUE"
-            # Sends the MUD URL to the MUDFS
-            echo "Sending MUD URL to the MUDFS..."
-            # Passes the MUD URL to the script that takes care of the communication with the MUDFS
-            
-
+            echo "The mudsigner extension value does not match the mudfs certificate."
         fi
-
-        # Extract the value of the extension called "id-pe-mudsigner"
-        MUDSIGNER_VALUE=$(openssl x509 -in "$CERT_FILE" -noout -text | grep -A1 "1.3.6.1.5.5.7.1.30" | tail -n1 | awk '{$1=$1;print}')
-
-        if [ -z "$MUDSIGNER_VALUE" ]; then
-            echo "Extension id-pe-mudsigner not found in the certificate."
-
-        else
-            echo "id-pe-mudsigner: $MUDSIGNER_VALUE"
-        fi
+        echo "Mudfs subject: $MUDFS_VALUE"
+        echo "Mudsigner value: $MUDSIGNER_VALUE"
     fi
 fi
-
 
 # Prima controlla la validità e poi fai il parsing.

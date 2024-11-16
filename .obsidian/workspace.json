@@ -13,6 +13,20 @@
             "state": {
               "type": "markdown",
               "state": {
+                "file": "Architettura di riferimento.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Architettura di riferimento"
+            }
+          },
+          {
+            "id": "2ee81e8b69aae819",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
                 "file": "README.md",
                 "mode": "source",
                 "source": false
@@ -21,7 +35,8 @@
               "title": "README"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -175,35 +190,35 @@
       "command-palette:Apri riquadro comandi": false
     }
   },
-  "active": "b7ca4203825106cd",
+  "active": "2ee81e8b69aae819",
   "lastOpenFiles": [
     "Architettura di riferimento.md",
-    "README.md",
-    "src/osmud_behavior.png",
     "Certificate_generator/generated/iot_dev_cert.pem",
     "Certificate_generator/generated/iot_dev_key.key",
     "Certificate_generator/generated/manufacturer_ca_cert.pem",
     "Certificate_generator/generated/manufacturer_ca_key.key",
     "Certificate_generator/generated/mudfs_cert.pem",
     "Certificate_generator/generated/mudfs_key.key",
-    "Certificate_generator/generated/testmud.json",
-    "Certificate_generator/generated/testmud.p7s",
-    "Certificate_generator/testmud.p7s",
-    "Certificate_generator/testmud.json",
-    "Appunti.md",
+    "Certificate_generator/requirements.txt",
+    "Certificate_generator/generated/requirements.txt",
+    "Certificate_generator/x509_parser copy.sh",
+    "README.md",
+    "src/first_try_res.png",
+    "src/osmud_behavior.png",
+    "src/optimization_1.png",
     "src/ref_arch.png",
     "src/ref_arch_final.png",
-    "src/ref_arch 1.png",
-    "Pasted image 20241016135327.png",
-    "Try&Error journal.md",
+    "src/sec_try_res_1.png",
+    "src/sec_try_res_2.png",
+    "src/sec_try_res_3.png",
     "src/third_try_res.jpg",
-    "src/optimization_1.png",
+    "Appunti.md",
+    "Pasted image 20241016135327.png",
+    "Certificate_generator/generated/testmud.json",
+    "Try&Error journal.md",
     "src/Pasted.md",
-    "Untitled Diagram 1.svg",
     "Untitled.md",
-    "Untitled Diagram.svg",
     "Untitled.canvas",
-    "2024-10-06.md",
-    "src/sec_try_res_3.png"
+    "2024-10-06.md"
   ]
 }
