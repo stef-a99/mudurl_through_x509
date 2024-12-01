@@ -30,6 +30,8 @@ Implementation of the MUD architecture (Manufacturer Usage Description) through 
 >[!TODO] Chiudere il giro di MUD, con ottenimento delle iptables e la verifica delle comunicazioni
 >
 >Dopo di che, passa alla sperimentazione su Fit IoTLab
+>
+>Comando per lancio osmud: `./osmud -d -x /var/run/osmud.pid -e /var/log/dhcpmasq.txt -b /etc/osmud/mudfiles/ -w /etc/osmud/dnswhitelist -l /var/log/osmud.log -x509`
 
 >[!TODO] Crea un ambiente riproducibile con Ansible
 
