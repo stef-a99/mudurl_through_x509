@@ -51,3 +51,12 @@ csr = x509.CertificateSigningRequestBuilder().subject_name(x509.Name([
 csr_filename_with_suffix = args.filename + ".csr"
 with open(csr_filename_with_suffix, "wb") as f:
     f.write(csr.public_bytes(serialization.Encoding.PEM))
+
+# Save the key to a file
+key_filename_with_suffix = args.filename + ".key"
+with open(key_filename_with_suffix, "wb") as f:
+    f.write(private_key.private_bytes(
+        encoding=serialization.Encoding.PEM,
+        format=serialization.PrivateFormat.TraditionalOpenSSL,
+        encryption_algorithm=serialization.NoEncryption()
+    ))
